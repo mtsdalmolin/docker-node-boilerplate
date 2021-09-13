@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  app:
+    image: node:14.16.0-alpine3.10
+    ports:
+      - "3000:3000"
+    build:
+      context: ./
+    volumes:
+      - ./:/app
+    container_name: "node-app"
+    working_dir: "/app"
+    entrypoint: ["/bin/sh","-c"]
+    command:
+      - |
+        npm install
+        npm start
